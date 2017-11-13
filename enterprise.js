@@ -2,14 +2,14 @@ var business = {
     carType: 'Economy',
     carType2: 'Midsize',
     economyCar: 90,
+    economyCarBooked: 0,
     midsizeCar: 180,
+    midsizeCarBooked: 0,
     economyAvailable: function () {
-        this.economyCar = this.economyCar--;
-        return this.economyCar--;
+        return this.economyCar - this.economyCarBooked;
         },
     midsizeAvailable: function () {
-        this.midsizeCar = this.midsizeCar--;
-        return this.midsizeCar--;
+        return this.midsizeCar - this.midsizeCarBooked;
         },
         
     availability: function () {
@@ -17,33 +17,24 @@ var business = {
         document.getElementById('midsize').innerHTML = business.carType2;
         document.getElementById('economyAvail').innerHTML = business.economyCar;
         document.getElementById('midsizeAvail').innerHTML = business.midsizeCar;
-        }
+        },
         
-
-    // rentEconomy: function () {
-    //     document.getElementById('economyAvail').innerHTML = business.economyAvailable();
-    //     },
-
-    // rentMid: function () {
-    //     document.getElementById('midsizeAvail').innerHTML = business.midsizeAvailable();
-    //     }
+    bookEcon: function() {
+        return this.economyCarBooked++;
+     },
+     
+    bookMid: function() {
+        return this.midsizeCarBooked++;
+     },
     };
     
- 
-
-// function availability () {
-//     document.getElementById('economy').innerHTML = business.carType;
-//     document.getElementById('midsize').innerHTML = business.carType2;
-//     document.getElementById('economyAvail').innerHTML = business.economyCar;
-//     document.getElementById('midsizeAvail').innerHTML = business.midsizeCar;
-// }
-
-// function rentEconomy () {
-//     document.getElementById('economyAvail').innerHTML = business.economyAvailable();
-// }
-
-// function rentMid () {
-//     document.getElementById('midsizeAvail').innerHTML = business.midsizeAvailable();
-// }
-
-
+    function rentEcon() {
+        business.bookEcon();
+        document.getElementById('economyAvail').innerHTML = business.economyAvailable();
+     }
+     
+     function rentMid() {
+        business.bookMid();
+        document.getElementById('midsizeAvail').innerHTML = business.midsizeAvailable();
+     }
+    
