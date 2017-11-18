@@ -7,26 +7,48 @@
     <title>Enterprise</title>
 </head>
 <body>
-    
-   <h1>Business Name</h1>
-    <p>Enterprise Car Rental</p>
-    
-    <h3>Car Type</h3>
-    <p id="economy"></p>
-    
-    <h3>Economy Cars Available</h3>
-    <p id="economyAvail"></p>
-    
-    <h3>Car Type</h3>
-    <p id="midsize"></p>
-    
-    <h3>Midsize Cars Available</h3>
-    <p id="midsizeAvail"></p>
-    
-    <button onclick="business.availability()">Update Availability</button> 
-    <button onclick="rentEcon()">Rent out 1 Economy Car</button>
-    <button onclick="rentMid()">Rent out 1 Midsize Car</button>
-    
+    <div style="border-style:solid; border-color: black; width: 320px; margin: 10px; padding-left: 5px">
+		<h2>Business Name:</h2>
+		<h2>Enterprise Car Rental</h2>
+	</div>
+	<div style="border-style:solid; border-color: black; width: 320px; margin: 10px; padding-left: 5px">
+		<h3>Car Type:</h3>
+		<p id="economy"></p>
+		<h3>Economy Cars Available:</h3>
+		<p id="economyAvail"></p>
+		<h3>Economy Cars Price:</h3>
+		<p id="economyPrice"></p>
+	</div>
+	<div style="border-style:solid; border-color: black; width: 320px; margin: 10px; padding-left: 5px">
+		<h3>Car Type:</h3>
+		<p id="midsize"></p>
+		<h3>Midsize Cars Available:</h3>
+		<p id="midsizeAvail"></p>
+		<h3>Midsize Cars Price:</h3>
+		<p id="midsizePrice"></p>
+	</div>
+	<br>
+    <br>
+    <div style="border-style:solid; border-color: black; width: 307px; margin: 10px; padding: 10px">
+		<form action="">
+			Renter Name: <input id="name" name="name" type="text" value=""> 
+			<br><br>
+			Type of Car: <select id="carChoice" onchange="showInfo()">
+				<option value="0">
+					None
+				</option>
+				<option value="1">
+					Economy
+				</option>
+				<option value="2">
+					Midsize
+				</option>
+			</select><br>
+			<br>
+			<input onclick="rentCar()" type="button" value="Submit">
+		</form>
+	</div>
     <script src="enterprise.js"></script>
 </body>
 </html>
+
