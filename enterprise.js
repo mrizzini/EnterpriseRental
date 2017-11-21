@@ -12,14 +12,26 @@ var rentalInfo = {
 }
 
 var business = {
-    carType: 'Economy',
-    carType2: 'Midsize',
-    economyCar: 15,
-    economyCarBooked: 0,
-    economyCarPrice: "$20 per day",
-    midsizeCar: 10,
-    midsizeCarBooked: 0,
-    midsizeCarPrice: "$30 per day",
+    cars: [
+        {
+        model: 'Economy',
+        available: 15,
+        booked: 0,
+        price: "$20 per day",
+        },
+        {
+        model: 'Midsize',
+        available: 10,
+        booked: 0,
+        price: "$30 per day",
+        },
+        {
+        model: 'Limo',
+        available: 5,
+        booked: 0,
+        price: "$100 per day"
+        }
+    ],
     economyAvailable: function () {
         return this.economyCar - this.economyCarBooked;
         },
@@ -62,32 +74,28 @@ var business = {
             console.log(rentalInfo);
         } else if (carType == 0) { alert ('Must chose a car type to complete booking');
         } 
-      }
-    
-    function showInfo () {
-         var carType = document.getElementById("carChoice").value;
-         if (carType == 1) {
-              document.getElementById('economy').innerHTML=business.carType;
-              document.getElementById('economyPrice').innerHTML=business.economyCarPrice;
-              document.getElementById('economyAvail').innerHTML=business.economyAvailable();
-              document.getElementById('midsize').innerHTML= "";
-              document.getElementById('midsizePrice').innerHTML= "";
-              document.getElementById('midsizeAvail').innerHTML= "";
-         }  if (carType == 2) {
-              document.getElementById('midsize').innerHTML=business.carType2;
-              document.getElementById('midsizePrice').innerHTML=business.midsizeCarPrice;
-              document.getElementById('midsizeAvail').innerHTML=business.midsizeAvailable();
-              document.getElementById('economy').innerHTML= "";
-              document.getElementById('economyPrice').innerHTML= "";
-              document.getElementById('economyAvail').innerHTML= "";
-          }  if (carType == 0) {
-              document.getElementById('economy').innerHTML= "";
-              document.getElementById('economyPrice').innerHTML= "";
-              document.getElementById('economyAvail').innerHTML= "";
-              document.getElementById('midsize').innerHTML= "";
-              document.getElementById('midsizePrice').innerHTML= "";
-              document.getElementById('midsizeAvail').innerHTML= "";
-            }
-        }
+      } 
         
+    function showInfo (type) {
+        console.log(type);
+        document.getElementById('price').innerHTML = business.cars[type].price;
+        document.getElementById('available').innerHTML = business.cars[type].available;
+        }
       
+    for (var i = 0; i < business.cars.length; i++) {
+     
+        var radioBtn = document.createElement("INPUT");
+        radioBtn.setAttribute('type', 'radio');
+        radioBtn.setAttribute('name', 'carType');
+        radioBtn.setAttribute('value', i);
+        radioBtn.setAttribute('id', 'room' + i);
+        radioBtn.setAttribute('onclick', 'showInfo(' + i + ')');
+        var radioLbl = document.createElement('LABEL');
+        radioLbl.innerHTML = business.cars[i].model;
+        document.getElementById('radioSection').appendChild(radioBtn);
+        document.getElementById('radioSection').appendChild(radioLbl);
+    }
+     
+    document.getElementById('reservationForm').onsubmit = function (event) {
+        event.preventDefault();
+    };

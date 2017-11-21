@@ -30,22 +30,19 @@
 	<br>
     <br>
     <div style="border-style:solid; border-color: black; width: 307px; margin: 10px; padding: 10px">
-		<form action="">
+    	<form id="reservationForm" >
 			Renter Name: <input id="name" name="name" type="text" value=""> 
 			<br><br>
-			Type of Car: <select id="carChoice" onchange="showInfo()">
-				<option value="0">
-					None
-				</option>
-				<option value="1">
-					Economy
-				</option>
-				<option value="2">
-					Midsize
-				</option>
-			</select><br>
+			<div id="radioSection">
+			<label>Type of Car: </label>
+			</div>
 			<br>
-			<input onclick="rentCar()" type="button" value="Submit">
+			<div id="carInfo">
+				<h3>Car Info:</h3>
+				<p>Available: <span id="available"></span></p>
+				<p>Price: <span id="price"></span></p>
+			</div>
+			<button type="submit">Submit</button>
 		</form>
 	</div>
     <script src="enterprise.js"></script>
