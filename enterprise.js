@@ -51,12 +51,12 @@ var business = {
         if (renterName == "") {
             alert ('Must enter name')
         } 
-        else if ((carType == 1) && (business.economyCar - business.economyCarBooked !== 0)) {
+        else if ((carType == 1) && (business.economyAvailable() !== 0)) {
             rentEcon();
             rentalInfo.addRenter(renterName, carType);
             console.log(rentalInfo);
         }  
-        else if (carType == 2  && (business.midsizeCar - business.midsizeCarBooked !== 0)) {
+        else if (carType == 2  && (business.midsizeAvailable() !== 0)) {
             rentMid();
             rentalInfo.addRenter(renterName, carType);
             console.log(rentalInfo);
