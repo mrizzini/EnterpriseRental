@@ -76,45 +76,29 @@ var business = {
         } 
       } 
         
+        
     function showInfo () {
-        // console.log(type);
         var test = document.getElementById('carOptions').value;
         var test1 = [parseInt(test)];
-       
-        // document.getElementById('price').innerHTML = business.cars[type].price;
-        // document.getElementById('available').innerHTML = business.cars[type].available;
         document.getElementById('price').innerHTML = business.cars[test1].price;
         document.getElementById('available').innerHTML = business.cars[test1].available;
         }
       
-    // for (var i = 0; i < business.cars.length; i++) {
-            var selectBtn = document.createElement('SELECT');
-        
-            // selectBtn.setAttribute('type', 'select');
-            // selectBtn.setAttribute('name', 'carType');
-            selectBtn.setAttribute('id', 'carOptions');
-            selectBtn.setAttribute('onchange', 'showInfo()');
-            document.getElementById('radioSection').appendChild(selectBtn);
+    
+    var selectBtn = document.createElement('SELECT');
+        selectBtn.setAttribute('id', 'carOptions');
+        selectBtn.setAttribute('onchange', 'showInfo()');
+        document.getElementById('radioSection').appendChild(selectBtn);
                 
-                
-            for (var i = 0; i < business.cars.length; i++) { 
-               
-            var selectOption = document.createElement('OPTION');
-            selectOption.innerHTML = business.cars[i].model;
-            selectOption.setAttribute('value', i);
-            // selectOption.setAttribute('onchange', 'showInfo(' + i + ')');
-        // var radioBtn = document.createElement("INPUT");
-        // radioBtn.setAttribute('type', 'radio');
-        // radioBtn.setAttribute('name', 'carType');
-        // radioBtn.setAttribute('value', i);
-        // radioBtn.setAttribute('id', 'room' + i);
-        // radioBtn.setAttribute('onclick', 'showInfo(' + i + ')');
-        // var radioLbl = document.createElement('LABEL');
-        // radioLbl.innerHTML = business.cars[i].model;
-        // document.getElementById('radioSection').appendChild(selectBtn);
+    for (var i = 0; i < business.cars.length; i++) { 
+        var selectOption = document.createElement('OPTION');
+        selectOption.innerHTML = business.cars[i].model;
+        selectOption.setAttribute('value', i);
         document.getElementById('carOptions').appendChild(selectOption);
+        document.getElementById('price').innerHTML = business.cars[0].price;
+        document.getElementById('available').innerHTML = business.cars[0].available;
        
-    }
+        }
      
     document.getElementById('reservationForm').onsubmit = function (event) {
         event.preventDefault();
