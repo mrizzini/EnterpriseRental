@@ -30,6 +30,24 @@ var business = {
         available: 5,
         booked: 0,
         price: "$100 per day"
+        },
+        {
+        model: 'Van',
+        available: 25,
+        booked: 0,
+        price: "$10 per day"
+        },
+        {
+        model: 'bike',
+        available: 125,
+        booked: 0,
+        price: "$30 per day"
+        },
+        {
+          model: 'zipcar',
+        available: 12,
+        booked: 0,
+        price: "$330 per day"
         }
     ],
     economyAvailable: function () {
@@ -75,31 +93,30 @@ var business = {
         } else if (carType == 0) { alert ('Must chose a car type to complete booking');
         } 
       } 
-        
-        
-    function showInfo () {
+    
+    document.getElementById('carOptions').onchange = function () {
         var test = document.getElementById('carOptions').value;
-        var test1 = [parseInt(test)];
+        var test1 = parseInt(test);
         document.getElementById('price').innerHTML = business.cars[test1].price;
         document.getElementById('available').innerHTML = business.cars[test1].available;
-        }
-      
-    
-    var selectBtn = document.createElement('SELECT');
-        selectBtn.setAttribute('id', 'carOptions');
-        selectBtn.setAttribute('onchange', 'showInfo()');
-        document.getElementById('radioSection').appendChild(selectBtn);
-                
+    };
+        
     for (var i = 0; i < business.cars.length; i++) { 
-        var selectOption = document.createElement('OPTION');
-        selectOption.innerHTML = business.cars[i].model;
-        selectOption.setAttribute('value', i);
-        document.getElementById('carOptions').appendChild(selectOption);
-        document.getElementById('price').innerHTML = business.cars[0].price;
-        document.getElementById('available').innerHTML = business.cars[0].available;
+            var selectOption = document.createElement('OPTION');
+            selectOption.innerHTML = business.cars[i].model;
+            selectOption.setAttribute('value', i);
+            document.getElementById('carOptions').appendChild(selectOption);
+            document.getElementById('price').innerHTML = business.cars[0].price;
+            document.getElementById('available').innerHTML = business.cars[0].available;
        
         }
      
     document.getElementById('reservationForm').onsubmit = function (event) {
         event.preventDefault();
+        var test = document.getElementById('carOptions').value;
+        var test1 = parseInt(test);
+        var booked = business.cars[test1].booked++;
+        var nowAvail = business.cars[test1].available - booked;
+        document.getElementById('available').innerHTML =  nowAvail;
+        
     };
